@@ -19,7 +19,7 @@ jobs:
           node-version: '15'
           
       - name: Install Dependencies
-        run: npm install
+        run: npm install --save-dev prettier eslint
       
       - name: Run Lint
         run: npm run lint
