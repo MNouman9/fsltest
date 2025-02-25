@@ -1,21 +1,23 @@
 FROM node:15 as builder
 
-WORKDIR
+WORKDIR /app
 
-COPY
+COPY package*.json ./
 
-RUN 
+RUN npm install
 
-COPY
+COPY . .
 
-RUN 
+RUN npm run build
 
-FROM node:15
+FROM node:15 as deploy
 
-WORKDIR
+WORKDIR /app
 
-COPY
+COPY --from=builder /app/build ./build
 
-RUN 
+RUN npm install -g serve
 
-ENTRYPOINT 
+EXPOSE 5000
+
+ENTRYPOINT ["serve", "-s", "build", "-l", "5000"]
