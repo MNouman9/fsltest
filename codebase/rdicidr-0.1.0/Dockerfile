@@ -10,7 +10,7 @@ COPY
 
 RUN 
 
-FROM
+FROM node:15
 
 WORKDIR
 
